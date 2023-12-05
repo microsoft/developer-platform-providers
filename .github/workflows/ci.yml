@@ -7,9 +7,9 @@ on:
         type: string
         required: true
         description: 'The path to the provider sln file.'
-      tests:
+      test:
         type: boolean
-        required: true
+        required: false
         description: 'Whether to run tests or not.'
         default: false
 
@@ -36,11 +36,11 @@ jobs:
         run: dotnet build ${{ inputs.sln }} --configuration ${{ matrix.configuration }} --no-restore --verbosity normal
 
       - name: Test
-        if: ${{ inputs.tests == true }}
+        if: ${{ inputs.test == true }}
         run: dotnet test ${{ inputs.sln }} --configuration ${{ matrix.configuration }} --no-restore --verbosity normal --logger trx --results-directory test-results/
 
       - name: Upload Test Results
-        if: ${{ always() && inputs.tests == true }}
+        if: ${{ always() && inputs.test == true }}
         uses: actions/upload-artifact@v3
         with:
           name: Test Results (${{ matrix.configuration }})
