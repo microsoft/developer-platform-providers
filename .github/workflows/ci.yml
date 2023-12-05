@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  workflow_call:
+    inputs:
+      sln:
+        type: string
+        required: true
+        description: 'The path to the provider sln file.'
+      tests:
+        type: boolean
+        required: true
+        description: 'Whether to run tests or not.'
+        default: false
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        configuration: [debug, release]
+      fail-fast: false
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          global-json-file: ./global.json
+
+      - name: Restore
+        run: dotnet restore ${{ inputs.sln }} --verbosity normal
+
+      - name: Build
+        run: dotnet build ${{ inputs.sln }} --configuration ${{ matrix.configuration }} --no-restore --verbosity normal
+
+      - name: Test
+        if: ${{ inputs.tests == true }}
+        run: dotnet test ${{ inputs.sln }} --configuration ${{ matrix.configuration }} --no-restore --verbosity normal --logger trx --results-directory test-results/
+
+      - name: Upload Test Results
+        if: ${{ always() && inputs.tests == true }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: Test Results (${{ matrix.configuration }})
+          path: test-results/*
