@@ -9,6 +9,30 @@
 | [DevCenter][developer-platform-devcenter] | todo        |
 | [DevCenter][developer-platform-github]    | todo        |
 
+## nuget.config
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <packageSources>
+    <!--To inherit the global NuGet package sources remove the <clear/> line below -->
+    <clear />
+    <add key="nuget" value="https://api.nuget.org/v3/index.json" />
+    <add key="msdev" value="https://msdevnuget.blob.core.windows.net/feed/index.json" />
+  </packageSources>
+
+  <!-- Microsoft.Developer.* packages will be restored from msdev, everything else from nuget.org. -->
+  <packageSourceMapping>
+    <packageSource key="nuget">
+      <package pattern="*" />
+    </packageSource>
+    <packageSource key="msdev">
+      <package pattern="Microsoft.Developer.*" />
+    </packageSource>
+  </packageSourceMapping>
+</configuration>
+```
+
 ## Contributing
 
 This project welcomes contributions and suggestions. Most contributions require you to agree to a
