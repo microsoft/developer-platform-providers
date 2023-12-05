@@ -1,15 +1,15 @@
 name: Release Provider
 
-run-name: Release ${{ inputs.provider}} Provider
+run-name: Release ${{ inputs.name}} Provider
 
 on:
   workflow_call:
     inputs:
-      provider:
+      name:
         type: string
         required: true
         description: 'The name of the provider to release.'
-      folder:
+      path:
         type: string
         required: true
         description: 'The path to the provider project folder.'
@@ -30,8 +30,8 @@ jobs:
         id: setup
         run: |
           BUILD_DATE="`date -u +"%Y-%m-%dT%H:%M:%SZ"`" && echo "date=$BUILD_DATE" >> $GITHUB_OUTPUT
-          IMAGE_VERSION=$(cat ${{ inputs.folder }}/version.txt) && echo "version=$IMAGE_VERSION" >> $GITHUB_OUTPUT
-          PROVIDER_NAME=${{ inputs.provider }} && IMAGE_NAME=${PROVIDER_NAME,,} && echo "name=$IMAGE_NAME" >> $GITHUB_OUTPUT
+          IMAGE_VERSION=$(cat ${{ inputs.path }}/version.txt) && echo "version=$IMAGE_VERSION" >> $GITHUB_OUTPUT
+          PROVIDER_NAME=${{ inputs.name }} && IMAGE_NAME=${PROVIDER_NAME,,} && echo "name=$IMAGE_NAME" >> $GITHUB_OUTPUT
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
@@ -45,8 +45,8 @@ jobs:
           username: ${{ vars.REGISTRY_USERNAME || github.actor }}
           password: ${{ secrets.REGISTRY_PASSWORD || secrets.GITHUB_TOKEN }}
 
-      - name: Publish ${{ inputs.provider }}
-        working-directory: ${{ inputs.folder }}
+      - name: Publish ${{ inputs.name }}
+        working-directory: ${{ inputs.path }}
         run: dotnet publish -o home/site/wwwroot -p:Version="${{ steps.setup.outputs.version }}"
 
       - name: Build and push Docker image
@@ -58,8 +58,8 @@ jobs:
         with:
           # only build and push if this is not a pull request
           push: ${{ github.event_name != 'pull_request' }}
-          file: ${{ inputs.folder }}/Dockerfile
-          context: ${{ inputs.folder }}
+          file: ${{ inputs.path }}/Dockerfile
+          context: ${{ inputs.path }}
           build-args: |
             BUILD_DATE=${{ env.BUILD_DATE }}
             IMAGE_VERSION=${{ env.IMAGE_VERSION }}
