@@ -4,10 +4,10 @@
 
 ## Providers
 
-| Provider                                  | Description |
-| ----------------------------------------- | ----------- |
-| [DevCenter][developer-platform-devcenter] | todo        |
-| [DevCenter][developer-platform-github]    | todo        |
+| Repo                                                         | Description                                                  |                                                                                                                                                                                                   |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [developer-platform-github][developer-platform-github]       | The GitHub provider(s)                                       | [![developer-platform-github](https://img.shields.io/github/v/release/microsoft/developer-platform-github?logo=github)](https://github.com/microsoft/developer-platform-github/releases)          |
+| [developer-platform-devcenter][developer-platform-devcenter] | The Dev Center [Azure Deployment Environments][ade] provider | [![developer-platform-devcenter](https://img.shields.io/github/v/release/microsoft/developer-platform-devcenter?logo=github)](https://github.com/microsoft/developer-platform-devcenter/releases) |
 
 ## nuget.config
 
@@ -57,3 +57,4 @@ Any use of third-party trademarks or logos are subject to those third-party's po
 
 [developer-platform-devcenter]: https://github.com/microsoft/developer-platform-devcenter
 [developer-platform-github]: https://github.com/microsoft/developer-platform-github
+[ade]: https://azure.microsoft.com/en-us/products/deployment-environments
