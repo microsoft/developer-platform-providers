@@ -1,0 +1,60 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Developer.Providers.DevCenter", "..\developer-platform-devcenter\src\Microsoft.Developer.Providers.DevCenter\Microsoft.Developer.Providers.DevCenter.csproj", "{68234EE4-6CFC-4188-9C24-3E6CDBB97E61}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Developer.Providers.GitHub", "..\developer-platform-github\src\Microsoft.Developer.Providers.GitHub\Microsoft.Developer.Providers.GitHub.csproj", "{5F365A97-769A-4AB2-9EDA-04CFF75B4FB1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "github", "github", "{6C1FE8BD-7D31-441B-AE46-682CDB01776E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "devcenter", "devcenter", "{CCB3FBFF-D69B-4EBE-85CF-38722F524F10}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{F4EC9670-2A26-4A18-9D77-1F77CC5807B6}"
+	ProjectSection(SolutionItems) = preProject
+		..\developer-platform-devcenter\.editorconfig = ..\developer-platform-devcenter\.editorconfig
+		..\developer-platform-devcenter\Directory.Build.props = ..\developer-platform-devcenter\Directory.Build.props
+		..\developer-platform-devcenter\Directory.Build.targets = ..\developer-platform-devcenter\Directory.Build.targets
+		..\developer-platform-devcenter\Directory.Packages.props = ..\developer-platform-devcenter\Directory.Packages.props
+		..\developer-platform-devcenter\global.json = ..\developer-platform-devcenter\global.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{2C8038F0-0329-4EC2-A844-0338E124CD79}"
+	ProjectSection(SolutionItems) = preProject
+		..\developer-platform-github\.editorconfig = ..\developer-platform-github\.editorconfig
+		..\developer-platform-github\Directory.Build.props = ..\developer-platform-github\Directory.Build.props
+		..\developer-platform-github\Directory.Build.targets = ..\developer-platform-github\Directory.Build.targets
+		..\developer-platform-github\Directory.Packages.props = ..\developer-platform-github\Directory.Packages.props
+		..\developer-platform-github\global.json = ..\developer-platform-github\global.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{68234EE4-6CFC-4188-9C24-3E6CDBB97E61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68234EE4-6CFC-4188-9C24-3E6CDBB97E61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68234EE4-6CFC-4188-9C24-3E6CDBB97E61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68234EE4-6CFC-4188-9C24-3E6CDBB97E61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F365A97-769A-4AB2-9EDA-04CFF75B4FB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F365A97-769A-4AB2-9EDA-04CFF75B4FB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F365A97-769A-4AB2-9EDA-04CFF75B4FB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F365A97-769A-4AB2-9EDA-04CFF75B4FB1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+
+		{68234EE4-6CFC-4188-9C24-3E6CDBB97E61} = {CCB3FBFF-D69B-4EBE-85CF-38722F524F10}
+		{5F365A97-769A-4AB2-9EDA-04CFF75B4FB1} = {6C1FE8BD-7D31-441B-AE46-682CDB01776E}
+		{F4EC9670-2A26-4A18-9D77-1F77CC5807B6} = {CCB3FBFF-D69B-4EBE-85CF-38722F524F10}
+		{2C8038F0-0329-4EC2-A844-0338E124CD79} = {6C1FE8BD-7D31-441B-AE46-682CDB01776E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C151EA7D-0E0B-4DFB-8751-98E083EC732D}
+	EndGlobalSection
+EndGlobal
